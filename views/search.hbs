@@ -1,0 +1,12 @@
+{{#each data}}
+    <div class="container-fluid">
+        <div class="row my-4">
+            <div class="col-4 object-fit-contain">
+                <img src="{{this.image}}" alt="" class="img-fluid">
+            </div>
+            <div class="col-8 d-flex justify-content-center align-items-center">
+                <p>{{this.description}}</p>
+            </div>
+        </div>
+    </div>
+{{/each}}

@@ -6,7 +6,7 @@ const userSchema = new Schema(
     username: {
       type: String,
       trim: true,
-      required: false,
+      required: true,
       unique: true
     },
     email: {
@@ -19,10 +19,17 @@ const userSchema = new Schema(
     password: {
       type: String,
       required: true
+    },
+    isAdmin: {
+      type: Boolean,
+      required: true,
+      default: false //admin accounts manually set to true in dB
+    },
+    stars: {
+      type: [Number]
     }
   },
-  {
-    // this second object adds extra properties: `createdAt` and `updatedAt`    
+  {  
     timestamps: true
   }
 );
