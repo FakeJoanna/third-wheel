@@ -34,15 +34,16 @@
                         <div class="modal-content">
                            <div class="modal-header">
                               <h1 class="modal-title fs-5" id="staticBackdropLabel">Login</h1>
+                              <p>{{errorMessage}}</p>
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                            </div>
                            <div class="modal-body">
-                              <form>
+                              <form action="/" method="POST">
                                  <div class="form-outline mb-4">
-                                    <input type="username" id="form2Example1" class="form-control" placeholder="Username">
+                                    <input type="username" id="usernameInput" class="form-control" placeholder="Username" required>
                                  </div>
                                  <div class="form-outline mb-4">
-                                    <input type="password" id="form2Example2" class="form-control" placeholder="Password">
+                                    <input type="password" id="form2Example2" class="form-control" placeholder="Password" required>
                                  </div>
                                  <div class="row mb-4">
                                     <div class="col d-flex justify-content-center">

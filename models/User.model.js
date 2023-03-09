@@ -20,11 +20,6 @@ const userSchema = new Schema(
       type: String,
       required: true
     },
-    isAdmin: {
-      type: Boolean,
-      required: true,
-      default: false //admin accounts manually set to true in dB
-    },
     stars: {
       type: [Number]
     }
