@@ -15,7 +15,6 @@ const hbs = require("hbs");
 // Handles access to the partials
 hbs.registerPartials(__dirname + "/views/partials");
 
-
 const app = express();
 
 // ℹ️ This function is getting exported from the config folder. It runs most pieces of middleware

@@ -17,5 +17,10 @@ router.get("/search", (req, res, next) => {
   .catch(error => console.log("Error while getting products from DB: ", error));
 })
 
+/* GET user profile dashboard */
+router.get("/user-profile", (req, res, next) => {
+  const {username} = req.query
+  res.render("user-profile", {username});
+})
 
 module.exports = router;
