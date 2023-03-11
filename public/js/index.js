@@ -40,8 +40,7 @@ loginForm.onsubmit = (event) => {
       passwordInputDiv.appendChild(errorPassword);
     }
     else {
-      const {user} = data;
-      window.location.href = `/user-profile?username=${user.username}`;
+      window.location.href = `/user-profile`;
     }
   })
 }

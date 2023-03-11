@@ -10,10 +10,15 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                        Login
-                    </button>
-
+                    {{#if userInSession}}
+                        <li class="nav-item">
+                            <a class="nav-link" href="/user-profile">Profile page</a>
+                        </li>
+                    {{else}}
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            Login
+                        </button>
+                    {{/if}}
                     <!-- Modal -->
                     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog">
@@ -34,7 +39,7 @@
                                     <div class="col d-flex justify-content-center">
                                         <!-- Checkbox -->
                                         <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="checkbox" unchecked />
+                                        <input class="form-check-input" type="checkbox" value="" id="checkbox" name="rememberme" unchecked>
                                         <label class="form-check-label" for="chexkbox">Remember me</label>
                                         </div>
                                     </div>

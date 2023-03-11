@@ -19,7 +19,7 @@ router.post("/signup", (req, res, next) => {
     bcryptjs
     .genSalt(saltRounds)
     .then(salt => bcryptjs.hash(password, salt))
-    .then(hashedPassword =>{
+    .then(hashedPassword => {
         return User.create({
             username,
             email,
@@ -34,15 +34,22 @@ router.post("/signup", (req, res, next) => {
 // POST API DB - LOGIN
 
 router.post("/api/users", isLoggedOut, (req, res, next) => {
-    const { username, password } = req.body;
+    const { username, password, rememberme } = req.body;
     User.findOne({username})
     .then(user => {
         if(!user) { //no user
             res.json({ isUser: false })
         } else if (bcryptjs.compareSync(password, user.password)) { //succesful request
             
-            req.session.currentUser = user;
-            res.json({ isUser: true, user })
+            if (rememberme === "") {
+                req.session.currentUser = user
+                req.session.cookie.maxAge = 2629746000;
+                res.json({ isUser: true, user })
+            }
+            else {
+                req.session.currentUser = user;
+                res.json({ isUser: true, user })
+            }
 
         } else { //incorrect password
             res.json({ correctPassword: false })
@@ -54,6 +61,7 @@ router.post("/api/users", isLoggedOut, (req, res, next) => {
 // POST LOGOUT
 
 router.post('/logout', isLoggedIn, (req, res, next) => {
+    
     req.session.destroy(err => {
         if (err) next(err);
         res.redirect('/');

@@ -4,33 +4,37 @@
             <h1 class="my-4">Secondhand marketplace for ebikes</h1>
         </div>
     </div>
-    <div class="row d-flex justify-content-center">
-        <button class="col-1 d-md-none text-center m-1">
-            Text
-        </button>
-        <button class="col-1 d-md-none text-center m-1">
-            text
-        </button>
-        <button class="col-1 d-md-none text-center m-1">
-            text
-        </button>
-        <button class="col-1 d-md-none text-center m-1">
-            text
-        </button>
-        <button class="col-1 d-md-none text-center m-1">
-            text
-        </button>
-        <button class="col-1 d-md-none text-center m-1">
-            text
-        </button>
+    <div class="container-fluid mb-3">
+        <div class="d-flex justify-content-center">
+            <form action="/qL" method="GET">
+                <input type="text" class="d-none" name="qL" value="New">
+                <input class="btn btn-primary text-center m-1" type="submit" value="New">
+            </form>
+            <form action="/qL" method="GET">
+                <input type="number" class="d-none" name="qL" value="100">
+                <input class="btn btn-primary text-center m-1" type="submit" value="Under 100$">
+            </form>
+            <form action="/qL" method="GET">
+                <input type="text" class="d-none" name="qL" value="Fat Bike">
+                <input class="btn btn-primary text-center m-1" type="submit" value="Fat Bike"> 
+            </form>
+            <form action="/qL" method="GET">
+                <input type="number" class="d-none" name="qL" value="250">
+                <input class="btn btn-primary text-center m-1" type="submit" value="250W">
+            </form>
+            <form action="/qL" method="GET">
+                <input type="number" class="d-none" name="qL" value="1">
+                <input class="btn btn-primary text-center m-1" type="submit" value="Single gear">
+            </form>
+        </div>
     </div>
 </div>
 
 <div class="container-fluid">
     <div class="row">
         <form action="/search" method="GET" class="d-flex justify-content-center mt-3">
-            <input type="text" class="col-9 bg-light border-end-0">
-            <button class="border-0 bg-info" type="subtmit">Search</button>
+            <input type="text" class="col-9 bg-light border-end-0" name="query">
+            <button class="border-0 bg-info" type="submit">Search</button>
         </form>
     </div>
 </div>

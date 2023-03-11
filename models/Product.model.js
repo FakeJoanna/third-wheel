@@ -36,13 +36,13 @@ const productSchema = new Schema(
             required: true
         },
         specifications: {
-            frameSize:{type: Number},
+            frameSize:{type: String},
             motorType: {type: String}, 
             batteryCapacity:{type: String}, 
-            wheelsSize: {type: Number}, 
-            maxSpeed: {type: Number}, 
-            range: {type: Number}, 
-            gears: {type: Number}, 
+            wheelsSize: {type: String}, 
+            maxSpeed: {type: String}, 
+            range: {type: String}, 
+            gears: {type: String}, 
         }
     },
     {
@@ -50,6 +50,8 @@ const productSchema = new Schema(
     }
 )
 
+
+productSchema.index({ text:'text' })
 const Product = model("Product", productSchema);
 
 module.exports = Product;
