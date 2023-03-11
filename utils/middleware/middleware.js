@@ -1,7 +1,6 @@
 const isLoggedIn = (req, res, next) => {
     if (!req.session.currentUser) {
-      return res.status(401).json('Status: unauthorized');
-      //return res.redirect("/")
+      return res.redirect("/")
     }
     next();
   };
@@ -14,4 +13,5 @@ const isLoggedIn = (req, res, next) => {
   };
    
 
-  module.exports = { isLoggedIn, IsLoggedOut }
+  
+module.exports = { isLoggedIn, isLoggedOut }

@@ -3,12 +3,11 @@ const router = express.Router();
 const User = require("../models/User.model.js")
 const bcryptjs = require("bcryptjs");
 const saltRounds = 10;
-
-const axios = require("axios")
+const { isLoggedIn, isLoggedOut } = require('../utils/middleware/middleware.js');
 
 //GET SIGNUP
 
-router.get("/signup", (req, res, next) => {
+router.get("/signup", isLoggedOut, (req, res, next) => {
     res.render("auth/signup");
 })
 
@@ -34,7 +33,7 @@ router.post("/signup", (req, res, next) => {
 
 // POST API DB - LOGIN
 
-router.post("/api/users", (req, res, next) => {
+router.post("/api/users", isLoggedOut, (req, res, next) => {
     const { username, password } = req.body;
     User.findOne({username})
     .then(user => {
@@ -42,6 +41,7 @@ router.post("/api/users", (req, res, next) => {
             res.json({ isUser: false })
         } else if (bcryptjs.compareSync(password, user.password)) { //succesful request
             
+            req.session.currentUser = user;
             res.json({ isUser: true, user })
 
         } else { //incorrect password
@@ -53,10 +53,11 @@ router.post("/api/users", (req, res, next) => {
 
 // POST LOGOUT
 
-router.post('/logout', (req, res, next) => {
+router.post('/logout', isLoggedIn, (req, res, next) => {
     req.session.destroy(err => {
-      if (err) next(err);
-      res.redirect('/');
+        if (err) next(err);
+        res.redirect('/');
     });
-  });
+});
+
 module.exports = router;
