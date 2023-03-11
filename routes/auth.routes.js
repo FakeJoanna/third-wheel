@@ -27,8 +27,28 @@ router.post("/signup", (req, res, next) => {
         });
     })
     .then(newUser => console.log(`New user created: ${newUser}`))
-    .then(() => res.redirect("index"))
+    .then(() => res.redirect("/user-profile"))
     .catch((error) => next(error))
+})
+
+// POST API DB
+router.post("/api/users", (req, res, next) => {
+    console.log(req.body)
+    const { username, password } = req.body;
+    User.findOne({username})
+    .then(user => {
+        if(!user) { //no user
+            res.json({ isUser: false })
+        } else if (bcryptjs.compareSync(password, user.password)) { //succesful request
+            
+            res.json({ isUser: true})
+            res.render('/user-profile', { user })
+
+        } else {
+            res.json({ correctPassword: false })
+        }
+    })
+    .catch(error => console.log(error));
 })
 
 //POST Login

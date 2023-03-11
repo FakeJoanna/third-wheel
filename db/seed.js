@@ -101,6 +101,8 @@ const products = [
     }
 ]
 
+
+
 mongoose
     .connect(MONGO_URI)
     .then(x => {
