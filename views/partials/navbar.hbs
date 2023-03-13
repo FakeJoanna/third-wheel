@@ -1,76 +1,90 @@
-    <!-- Navigation -->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-            <a href="/">HOME</a>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary static-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">
+      <img src="https://i.imgur.com/J1IMJre.png" alt="" />
+    </a>
+    <h1 class="text-light m-0 pe-5">THE THIRD WHEEL</h1>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          {{#if userInSession}}
+            <li class="nav-item">
+              <a class="nav-link" href="/user-profile">Profile page</a>
+            </li>
+          {{else}}
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+              Login
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    {{#if userInSession}}
-                        <li class="nav-item">
-                            <a class="nav-link" href="/user-profile">Profile page</a>
-                        </li>
-                    {{else}}
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                            Login
-                        </button>
-                    {{/if}}
-                    <!-- Modal -->
-                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Login</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <form action="/" method="POST" id="loginForm">
-                                    <div class="form-outline mb-4" id="usernameInputDiv">
-                                        <input name="username" type="username" id="usernameInput" class="form-control" placeholder="Username" required>
-                                    </div>
-                                    <div class="form-outline mb-4" id="passwordInputDiv">
-                                        <input name="password" type="password" id="passwordInput" class="form-control" placeholder="Password" required>
-                                    </div>
-                                    <div class="row mb-4">
-                                    <div class="col d-flex justify-content-center">
-                                        <!-- Checkbox -->
-                                        <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="checkbox" name="rememberme" unchecked>
-                                        <label class="form-check-label" for="chexkbox">Remember me</label>
-                                        </div>
-                                    </div>
+          {{/if}}
+          <!-- Modal -->
+          <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="staticBackdropLabel">Login</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
 
-                                    <div class="col">
-                                        <!-- Simple link -->
-                                        <a href="#!" class="text-decoration-none">Forgot password?</a>
-                                    </div>
-                                    </div>
-
-                                    <div class="row">
-                                    <button type="submit" class="col-12 btn btn-primary ">Sign in</button>
-                                    </div>
-
-                                    <!-- Register buttons -->
-                                    
-                                </form>      
-                            </div>
-                            <div class="modal-footer text-center">
-                                <div class="container-fluid">
-                                    <p>Not a member?</p> <a href="/signup" class="text-decoration-none">Register</a>
-                                </div>
-                            </div>
-                        </div>
-                        </div>
+                <div class="modal-body">
+                  <form action="/" method="POST" id="loginForm">
+                    <div class="form-outline mb-4" id="usernameInputDiv">
+                      <input name="username" type="username" id="usernameInput" class="form-control" placeholder="Username" required />
                     </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-            </ul>
+                    <div class="form-outline mb-4" id="passwordInputDiv">
+                      <input name="password" type="password" id="passwordInput" class="form-control" placeholder="Password" required />
+                    </div>
+                    <div class="row mb-4">
+                      <div class="col d-flex justify-content-center">
+                        <!-- Checkbox -->
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="" id="checkbox" name="rememberme" unchecked />
+                          <label class="form-check-label" for="chexkbox">Remember me</label>
+                        </div>
+                      </div>
+
+                      <div class="col">
+                        <!-- Simple link -->
+                        <a href="#!" class="text-decoration-none">Forgot password?</a>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <button type="submit" class="col-12 btn btn-primary">Sign in</button>
+                    </div>
+
+                    <!-- Register buttons -->
+
+                  </form>
+                </div>
+                <div class="modal-footer text-center">
+                  <div class="container-fluid">
+                    <p>Not a member?</p>
+                    <a href="/signup" class="text-decoration-none">Register</a>
+                  </div>
+                </div>
+              </div>
             </div>
-        </div>
-    </nav>
+          </div>
+        </li>
+        <li class="nav-item">
+
+          <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Cart</button>
+
+          <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+            <div class="offcanvas-header">
+              <h5 id="offcanvasRightLabel">Offcanvas right</h5>
+              <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

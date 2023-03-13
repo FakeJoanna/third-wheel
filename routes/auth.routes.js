@@ -1,32 +1,32 @@
-const express = require('express');
-const router = express.Router();
+const express = require("express")
+const router = express.Router()
 const User = require("../models/User.model.js")
-const bcryptjs = require("bcryptjs");
-const saltRounds = 10;
-const { isLoggedIn, isLoggedOut } = require('../utils/middleware/middleware.js');
+const bcryptjs = require("bcryptjs")
+const saltRounds = 10
+const { isLoggedIn, isLoggedOut } = require("../utils/middleware/middleware.js")
 
 //GET SIGNUP
 
 router.get("/signup", isLoggedOut, (req, res, next) => {
-    res.render("auth/signup");
+  res.render("auth/signup")
 })
 
 //POST SIGNUP
 
 router.post("/signup", (req, res, next) => {
-    const { username, email, password} = req.body
+  const { username, email, password } = req.body
 
-    bcryptjs
+  bcryptjs
     .genSalt(saltRounds)
-    .then(salt => bcryptjs.hash(password, salt))
-    .then(hashedPassword => {
-        return User.create({
-            username,
-            email,
-            password: hashedPassword
-        });
+    .then((salt) => bcryptjs.hash(password, salt))
+    .then((hashedPassword) => {
+      return User.create({
+        username,
+        email,
+        password: hashedPassword,
+      })
     })
-    .then(newUser => console.log(`New user created: ${newUser}`))
+    .then((newUser) => console.log(`New user created: ${newUser}`))
     .then(() => res.redirect("/user-profile"), { newUser })
     .catch((error) => next(error))
 })
@@ -34,38 +34,39 @@ router.post("/signup", (req, res, next) => {
 // POST API DB - LOGIN
 
 router.post("/api/users", isLoggedOut, (req, res, next) => {
-    const { username, password, rememberme } = req.body;
-    User.findOne({username})
-    .then(user => {
-        if(!user) { //no user
-            res.json({ isUser: false })
-        } else if (bcryptjs.compareSync(password, user.password)) { //succesful request
-            
-            if (rememberme === "") {
-                req.session.currentUser = user
-                req.session.cookie.maxAge = 2629746000;
-                res.json({ isUser: true, user })
-            }
-            else {
-                req.session.currentUser = user;
-                res.json({ isUser: true, user })
-            }
+  const { username, password, rememberme } = req.body
+  User.findOne({ username })
 
-        } else { //incorrect password
-            res.json({ correctPassword: false })
+    .then((user) => {
+      if (!user) {
+        //no user
+        res.json({ isUser: false })
+      } else if (bcryptjs.compareSync(password, user.password)) {
+        //succesful request
+
+        if (rememberme === "") {
+          req.session.currentUser = user
+          req.session.cookie.maxAge = 2629746000
+          res.json({ isUser: true, user })
+        } else {
+          req.session.currentUser = user
+          res.json({ isUser: true, user })
         }
+      } else {
+        //incorrect password
+        res.json({ correctPassword: false })
+      }
     })
-    .catch(error => console.log(error));
+    .catch((error) => console.log(error))
 })
 
 // POST LOGOUT
 
-router.post('/logout', isLoggedIn, (req, res, next) => {
-    
-    req.session.destroy(err => {
-        if (err) next(err);
-        res.redirect('/');
-    });
-});
+router.post("/logout", isLoggedIn, (req, res, next) => {
+  req.session.destroy((err) => {
+    if (err) next(err)
+    res.redirect("/")
+  })
+})
 
-module.exports = router;
+module.exports = router

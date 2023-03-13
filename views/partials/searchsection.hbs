@@ -1,40 +1,40 @@
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-12 d-md-none text-center">
-            <h1 class="my-4">Secondhand marketplace for ebikes</h1>
-        </div>
+<div class="container">
+  <div class="row">
+    <div class="col-12 text-center h-25">
+      <h1 class="my-3">Secondhand marketplace for ebikes</h1>
     </div>
-    <div class="container-fluid mb-3">
-        <div class="d-flex justify-content-center">
-            <form action="/qL" method="GET">
-                <input type="text" class="d-none" name="qL" value="New">
-                <input class="btn btn-primary text-center m-1" type="submit" value="New">
-            </form>
-            <form action="/qL" method="GET">
-                <input type="number" class="d-none" name="qL" value="100">
-                <input class="btn btn-primary text-center m-1" type="submit" value="Under 100$">
-            </form>
-            <form action="/qL" method="GET">
-                <input type="text" class="d-none" name="qL" value="Fat Bike">
-                <input class="btn btn-primary text-center m-1" type="submit" value="Fat Bike"> 
-            </form>
-            <form action="/qL" method="GET">
-                <input type="number" class="d-none" name="qL" value="250">
-                <input class="btn btn-primary text-center m-1" type="submit" value="250W">
-            </form>
-            <form action="/qL" method="GET">
-                <input type="number" class="d-none" name="qL" value="1">
-                <input class="btn btn-primary text-center m-1" type="submit" value="Single gear">
-            </form>
-        </div>
+  </div>
+  <div class="container-fluid col-12">
+    <div class="d-flex justify-content-center mt-3">
+      <form action="/qL" method="GET">
+        <input type="text" class="d-none" name="qL" value="New" />
+        <input class="btn btn-primary text-center m-1" type="submit" value="New" />
+      </form>
+      <form action="/qL" method="GET">
+        <input type="number" class="d-none" name="qL" value="100" />
+        <input class="btn btn-primary text-center m-1" type="submit" value="Under 100$" />
+      </form>
+      <form action="/qL" method="GET">
+        <input type="text" class="d-none" name="qL" value="Fat Bike" />
+        <input class="btn btn-primary text-center m-1" type="submit" value="Fat Bike" />
+      </form>
+      <form action="/qL" method="GET">
+        <input type="number" class="d-none" name="qL" value="250" />
+        <input class="btn btn-primary text-center m-1" type="submit" value="250W" />
+      </form>
+      <form action="/qL" method="GET">
+        <input type="number" class="d-none" name="qL" value="1" />
+        <input class="btn btn-primary text-center m-1" type="submit" value="Single gear" />
+      </form>
     </div>
+  </div>
 </div>
 
-<div class="container-fluid">
-    <div class="row">
-        <form action="/search" method="GET" class="d-flex justify-content-center mt-3">
-            <input type="text" class="col-9 bg-light border-end-0" name="query">
-            <button class="border-0 bg-info" type="submit">Search</button>
-        </form>
-    </div>
+<div class="container d-md-flex align-items-center">
+  <div class="col-auto my-4">
+    <form action="/search" method="GET" class="row gy-2 align-items-center mx-4 my-4">
+      <input type="text" class="form-control" id="autoSizingInput" name="query" />
+      <button class="btn btn-primary" type="submit">Search</button>
+    </form>
+  </div>
 </div>

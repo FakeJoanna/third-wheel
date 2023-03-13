@@ -1,16 +1,16 @@
 // config/session.config.js
 
 // require session
-const session = require('express-session');
+const session = require("express-session")
 
 // ADDED: require mongostore
-const MongoStore = require('connect-mongo');
+const MongoStore = require("connect-mongo")
 
 // ADDED: require mongoose
-const mongoose = require('mongoose');
+const mongoose = require("mongoose")
 
-module.exports = app => {
-  app.set('trust proxy', 1);
+module.exports = (app) => {
+  app.set("trust proxy", 1)
 
   app.use(
     session({
@@ -18,17 +18,18 @@ module.exports = app => {
       resave: true,
       saveUninitialized: false,
       cookie: {
-        sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
-        secure: process.env.NODE_ENV === 'production',
+        sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+        secure: process.env.NODE_ENV === "production",
         httpOnly: true,
-        maxAge: 86400000
+        maxAge: 86400000,
       }, // ADDED code below !!!
       store: MongoStore.create({
-        mongoUrl: process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/third-wheel"
+        mongoUrl:
+          process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/third-wheel",
 
         // ttl => time to live
         // ttl: 60 * 60 * 24 // 60sec * 60min * 24h => 1 day
-      })
+      }),
     })
-  );
-};
+  )
+}
