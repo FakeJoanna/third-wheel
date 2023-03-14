@@ -2,7 +2,7 @@ const { Schema, model } = require("mongoose")
 
 const productSchema = new Schema(
   {
-    name: {
+    title: {
       type: String,
       required: true,
     },
@@ -14,6 +14,10 @@ const productSchema = new Schema(
       type: String,
       required: true,
     },
+    year: {
+      type: Number,
+      required: true,
+    },
     description: {
       type: String,
       required: true,
@@ -22,10 +26,12 @@ const productSchema = new Schema(
       type: Number,
       required: true,
     },
-    image: {
-      type: [String],
-      required: true,
-    },
+    image: [
+      {
+        type: String,
+        required: true,
+      },
+    ],
     condition: {
       type: String,
       required: true,
@@ -33,6 +39,7 @@ const productSchema = new Schema(
     isSold: {
       type: Boolean,
       required: true,
+      default: false,
     },
     specifications: {
       frameSize: { type: String },
@@ -43,6 +50,7 @@ const productSchema = new Schema(
       range: { type: String },
       gears: { type: String },
     },
+    postedBy: { type: Schema.Types.ObjectId, ref: "User" },
   },
   {
     timestamps: true,

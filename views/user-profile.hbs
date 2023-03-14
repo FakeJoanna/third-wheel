@@ -1,5 +1,18 @@
-<form action="/logout" method="POST">
-<button type="submit">Log out</button>
-</form>
-Hello
-{{userInSession.username}}
+<div class="container text-center mt-4">
+  <h2 class="">
+    Hello
+    {{userInSession.username}}
+  </h2>
+  <p>welcome to the admin page.</p>
+</div>
+<div class="d-grid gap-2 mx-4">
+  <form class="d-grid gap-2" action="/new-listing" method="GET">
+    <button class="btn btn-primary" type="submit">Sell bike</button>
+  </form>
+  <form class="d-grid gap-2" action="product/:productID" method="GET">
+    <button class="btn btn-primary" type="submit">See your posts</button>
+  </form>
+  <form class="d-grid gap-2" action="/logout" method="POST">
+    <button class="btn btn-outline-primary" type="submit">Log out</button>
+  </form>
+</div>

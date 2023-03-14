@@ -13,7 +13,14 @@
         <li class="nav-item">
           {{#if userInSession}}
             <li class="nav-item">
-              <a class="nav-link" href="/user-profile">Profile page</a>
+              <a class="nav-link" href="/user-profile">
+                <button type="button" class="btn btn-primary">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"></path>
+                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"></path>
+                  </svg>
+                  {{userInSession.username}}
+                </button></a>
             </li>
           {{else}}
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
@@ -28,7 +35,6 @@
                   <h1 class="modal-title fs-5" id="staticBackdropLabel">Login</h1>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-
                 <div class="modal-body">
                   <form action="/" method="POST" id="loginForm">
                     <div class="form-outline mb-4" id="usernameInputDiv">
@@ -45,19 +51,15 @@
                           <label class="form-check-label" for="chexkbox">Remember me</label>
                         </div>
                       </div>
-
                       <div class="col">
                         <!-- Simple link -->
                         <a href="#!" class="text-decoration-none">Forgot password?</a>
                       </div>
                     </div>
-
                     <div class="row">
                       <button type="submit" class="col-12 btn btn-primary">Sign in</button>
                     </div>
-
                     <!-- Register buttons -->
-
                   </form>
                 </div>
                 <div class="modal-footer text-center">
@@ -70,17 +72,22 @@
             </div>
           </div>
         </li>
+        {{! Offcanvas sidebar CART }}
         <li class="nav-item">
-
-          <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Cart</button>
-
+          <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-basket" viewBox="0 0 16 16">
+              <path
+                d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9H2zM1 7v1h14V7H1zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5z"
+              ></path>
+            </svg>
+            Cart
+          </button>
           <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
             <div class="offcanvas-header">
-              <h5 id="offcanvasRightLabel">Offcanvas right</h5>
+              <h5 id="offcanvasRightLabel">Your cart</h5>
               <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
-
             </div>
           </div>
         </li>
