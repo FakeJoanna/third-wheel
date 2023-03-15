@@ -21,14 +21,18 @@ router.get("/search", (req, res, next) => {
         userInSession: req.session.currentUser,
       })
     })
-    .catch((error) =>
-      console.log("Error while getting products from DB: ", error)
-    )
+    .catch((error) => console.log("Error while getting products from DB: ", error))
 })
 
 /* GET user profile dashboard */
 router.get("/user-profile", isLoggedIn, (req, res, next) => {
-  res.render("user-profile", { userInSession: req.session.currentUser })
+  {
+    try {
+      res.render("user-profile", { userInSession: req.session.currentUser })
+    } catch {
+      console.log(`Error while getting user profile page: ${error}`)
+    }
+  }
 })
 
 module.exports = router

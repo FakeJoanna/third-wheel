@@ -4,11 +4,19 @@ const User = require("../models/User.model.js")
 const bcryptjs = require("bcryptjs")
 const saltRounds = 10
 const { isLoggedIn, isLoggedOut } = require("../utils/middleware/middleware.js")
+const Mail = require("nodemailer/lib/mailer/index.js")
+const mail = require("../config/nodemailer")
 
 //GET SIGNUP
 
 router.get("/signup", isLoggedOut, (req, res, next) => {
-  res.render("auth/signup")
+  {
+    try {
+      res.render("auth/signup")
+    } catch {
+      console.log(`Error while getting signup page: ${error}`)
+    }
+  }
 })
 
 //POST SIGNUP
@@ -26,7 +34,10 @@ router.post("/signup", (req, res, next) => {
         password: hashedPassword,
       })
     })
-    .then((newUser) => console.log(`New user created: ${newUser}`))
+    .then((newUser) => {
+      req.mail.send(newUser.to)
+      console.log(`New user created: ${newUser}`)
+    })
     .then(() => res.redirect("/user-profile"), { newUser })
     .catch((error) => next(error))
 })

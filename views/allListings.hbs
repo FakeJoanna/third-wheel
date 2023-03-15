@@ -1,0 +1,14 @@
+{{#each response}}
+  {{this.title}}
+  {{this._id}}
+
+  <a href="/product/{{this._id}}/edit">Edit</a>
+
+  <form class="container" action="/product/{{this._id}}/edit" method="GET">
+    <button class="btn btn-primary mb-5" type="submit">EDIT</button>
+  </form>
+  <form action="/allListings" method="POST">
+    <input type="hidden" name="id" value="{{this._id}}" />
+    <button class="btn btn-outline bg-danger" type="submit">DELETE</button>
+  </form>
+{{/each}}
