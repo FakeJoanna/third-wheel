@@ -35,11 +35,12 @@ router.post("/signup", (req, res, next) => {
       })
     })
     .then((newUser) => {
-      req.mail.send(newUser.to)
       console.log(`New user created: ${newUser}`)
+      res.redirect("/user-profile"), { newUser }
     })
-    .then(() => res.redirect("/user-profile"), { newUser })
-    .catch((error) => next(error))
+    .catch((error) => {
+      res.render("auth/signup", { errorMessage: "Username or email already in use" })
+    })
 })
 
 // POST API DB - LOGIN

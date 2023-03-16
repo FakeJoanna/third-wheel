@@ -46,22 +46,33 @@ router.get("/product/:productID", isLoggedIn, (req, res, next) => {
 
 //GET EDIT PRODUCT PAGE
 
-router.get("product/:productID/edit", (req, res, next) => {
-  const productID = req.params
-  res.render("editpage")
+router.get("/product/:productID/edit", (req, res, next) => {
+  const { productID } = req.params
+  Product.findById(productID).then((response) => {
+    console.log(response)
+    res.render("editpage", { product: response, userInSession: req.session.currentUser })
+  })
 })
 
-//
-/*router.get("/product/productID/edit", isLoggedIn, (req, res, next) => {
+// POST EDIT PRODUCT
+
+router.post("/product/:productID/edit", fileUploader.array("image"), (req, res, next) => {
   const { productID } = req.params
-  Product.findByIdAndUpdate(productID)
+  console.log(req.body)
+  Product.findById(productID)
     .then((product) => {
-      res.redirect("/product/:productID", { product, userInSession: req.session.currentUser })
+      Object.assign(product, req.body)
+      console.log(product)
+      return product.save()
     })
-    .catch((error) => console.log(`Error while editing the product: ${error}`))
-})*/
+    .then(() => {
+      res.redirect(`/product/${productID}`)
+    })
+    .catch((error) => console.log(`Error editing this product: ${error}`))
+})
 
 // POST DELETE PRODUCT
+
 router.post("/allListings", isLoggedIn, (req, res, next) => {
   const id = req.body.id
   Product.findByIdAndDelete(id)
@@ -79,7 +90,7 @@ router.get("/allListings", isLoggedIn, (req, res, next) => {
   Product.find({ postedBy: postedBy })
     .then((response) => {
       console.log(response)
-      res.render("allListings", { response })
+      res.render("allListings", { response, userInSession: req.session.currentUser })
     })
     .catch((error) => console.log(`Error while getting all listings page: ${error}`))
 })

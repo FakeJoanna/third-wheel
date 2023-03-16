@@ -1,1 +1,95 @@
-Success!
+<form class="was-validated container" action="/product/{{product._id}}/edit" method="POST" enctype="multipart/form-data">
+  <h3 class="my-4">Edit your product:</h3>
+  <div class="row g-2">
+
+    <div class="form-floating">
+      <input type="text" class="form-control" id="floatingInputGrid" placeholder="Title" name="title" value="{{product.title}}" />
+      <label for="floatingInputGrid">Title</label>
+    </div>
+    <div class="fluid form-floating col-md">
+      <input type="text" class="form-control" id="floatingInputGrid" placeholder="Brand" name="brand" value="{{product.brand}}" />
+      <label for="floatingInputGrid">Brand</label>
+    </div>
+    <div class="fluid form-floating col-md">
+      <input type="text" class="form-control" id="floatingInputGrid" placeholder="Model" name="model" value="{{product.model}}" />
+      <label for="floatingInputGrid">Model</label>
+    </div>
+    <div class="fluid form-floating col-md">
+      <input type="number" class="form-control" id="floatingInputGrid" placeholder="Year" name="year" value="{{product.year}}" />
+      <label for="floatingInputGrid">Year</label>
+    </div>
+    {{! DROPDOWN SELECTOR }}
+    <div class="col-md">
+      <div class="form-floating">
+        <select class="form-select" id="floatingSelectGrid" aria-label="Floating label select example" name="condition">
+          <option selected>{{product.condition}}</option>
+          <option value="New">New</option>
+          <option value="As good as new">As good as new</option>
+          <option value="Used">Used</option>
+          <option value="Poor condition">Poor condition</option>
+        </select>
+        <label for="floatingSelectGrid">Condition</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="input-group mb-3 my-2">
+    <span class="input-group-text">€</span>
+    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="Selling price" name="price" value="{{product.price}}" />
+    <span class="input-group-text">.00</span>
+  </div>
+  {{! TEXT AREA }}
+  <div class="mb-3">
+    <label for="validationTextarea" class="form-label my-2">Describe your product:</label>
+    <textarea class="form-control is-invalid" id="validationTextarea" data-mdb-showcounter="true" maxlength="500" placeholder="Required example textarea" required name="description">{{product.description}}</textarea>
+    <div class="invalid-feedback">
+      Please enter a message in the textarea.
+    </div>
+  </div>
+  <div class="row g-2 mb-1">
+    <h5 class="my-2">Additional informations</h5>
+    <div class="fluid form-floating col-md g-2 my-2">
+      <input type="text" class="form-control" id="floatingInputGrid" placeholder="Tile" name="frameSize" value="{{product.frameSize}}" />
+      <label for="floatingInputGrid">Frame Size</label>
+    </div>
+
+    <div class="fluid form-floating col-md">
+      <input type="text" class="form-control" id="floatingInputGrid" placeholder="Tile" name="motorType" value="{{product.motorType}}" />
+      <label for="floatingInputGrid">Motor Type</label>
+    </div>
+
+    <div class="fluid form-floating col-md">
+      <input type="text" class="form-control" id="floatingInputGrid" placeholder="Tile" name="batteryCapacity" value="{{product.batteryCapacity}}" />
+      <label for="floatingInputGrid">Battery Capacity</label>
+    </div>
+
+    <div class="fluid form-floating col-md">
+      <input type="text" class="form-control" id="floatingInputGrid" placeholder="Tile" name="wheelSize" value="{{product.wheelSize}}" />
+      <label for="floatingInputGrid">Wheel Size</label>
+    </div>
+  </div>
+  <div class="row g-2 mt-1">
+    <div class="fluid form-floating col-md">
+      <input type="text" class="form-control" id="floatingInputGrid" placeholder="Tile" name="maxSpeed" value="{{product.maxSpeed}}" />
+      <label for="floatingInputGrid">Max. Speed</label>
+    </div>
+    <div class="fluid form-floating col-md">
+      <input type="text" class="form-control" id="floatingInputGrid" placeholder="Tile" name="range" value="{{product.range}}" />
+      <label for="floatingInputGrid">Distance range</label>
+    </div>
+    <div class="fluid form-floating col-md mb-2">
+      <input type="text" class="form-control" id="floatingInputGrid" placeholder="Tile" name="gears" value="{{product.gears}}" />
+      <label for="floatingInputGrid">Gears</label>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <input type="file" class="form-control" aria-label="file example" name="image" required multiple />
+    <div class="invalid-feedback">Example invalid form file feedback</div>
+  </div>
+
+  <div class="mb-3">
+    <button class="btn btn-primary" type="submit">Submit form</button>
+  </div>
+
+</form>
