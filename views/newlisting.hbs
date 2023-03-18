@@ -2,24 +2,24 @@
 <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js" defer></script>
 <script src="/js/newlisting.js" defer></script>
 
-<form class="was-validated container" action="/new-listing" method="POST" enctype="multipart/form-data">
+<form class="container" action="/new-listing" method="POST" enctype="multipart/form-data">
   <h3 class="my-4">Start selling now !</h3>
   <div class="row g-2">
 
     <div class="form-floating">
-      <input type="text" class="form-control" id="floatingInputGrid" placeholder="Title" name="title" />
+      <input type="text" class="form-control" id="floatingInputGrid" placeholder="Title" name="title" required />
       <label for="floatingInputGrid">Title</label>
     </div>
     <div class="fluid form-floating col-md">
-      <input type="text" class="form-control" id="floatingInputGrid" placeholder="Brand" name="brand" />
+      <input type="text" class="form-control" id="floatingInputGrid" placeholder="Brand" name="brand" required />
       <label for="floatingInputGrid">Brand</label>
     </div>
     <div class="fluid form-floating col-md">
-      <input type="text" class="form-control" id="floatingInputGrid" placeholder="Model" name="model" />
+      <input type="text" class="form-control" id="floatingInputGrid" placeholder="Model" name="model" required />
       <label for="floatingInputGrid">Model</label>
     </div>
     <div class="fluid form-floating col-md">
-      <input type="number" class="form-control" id="floatingInputGrid" placeholder="Year" name="year" />
+      <input type="number" class="form-control" id="floatingInputGrid" placeholder="Year" name="year" required />
       <label for="floatingInputGrid">Year</label>
     </div>
     {{! DROPDOWN SELECTOR }}
@@ -39,13 +39,13 @@
 
   <div class="input-group mb-3 my-2">
     <span class="input-group-text">€</span>
-    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="Selling price" name="price" />
+    <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="Selling price" name="price" required />
     <span class="input-group-text">.00</span>
   </div>
   {{! TEXT AREA }}
   <div class="mb-3">
     <label for="validationTextarea" class="form-label my-2">Describe your product:</label>
-    <textarea class="form-control is-invalid" id="validationTextarea" data-mdb-showcounter="true" maxlength="500" placeholder="Required example textarea" required name="description"></textarea>
+    <textarea class="form-control" id="validationTextarea" data-mdb-showcounter="true" maxlength="500" placeholder="Required example textarea" required name="description"></textarea>
     <div class="invalid-feedback">
       Please enter a message in the textarea.
     </div>

@@ -1,5 +1,6 @@
 {{#each data}}
   <div class="container-fluid">
+    <a href="/product/{{this._id}}" class="text-decoration-none text-dark">
     <div class="row my-4">
       <div class="col-4 object-fit-contain">
         <img src="{{image}}" alt="" class="img-fluid" />
@@ -9,5 +10,5 @@
       </div>
     </div>
   </div>
-  <div></div>
+  </a>
 {{/each}}

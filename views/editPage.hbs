@@ -1,21 +1,21 @@
-<form class="was-validated container" action="/product/{{product._id}}/edit" method="POST" enctype="multipart/form-data">
+<form class="container" action="/product/{{product._id}}/edit" method="POST" enctype="multipart/form-data">
   <h3 class="my-4">Edit your product:</h3>
   <div class="row g-2">
 
     <div class="form-floating">
-      <input type="text" class="form-control" id="floatingInputGrid" placeholder="Title" name="title" value="{{product.title}}" />
+      <input type="text" class="form-control" id="floatingInputGrid" placeholder="Title" name="title" value="{{product.title}}" required />
       <label for="floatingInputGrid">Title</label>
     </div>
     <div class="fluid form-floating col-md">
-      <input type="text" class="form-control" id="floatingInputGrid" placeholder="Brand" name="brand" value="{{product.brand}}" />
+      <input type="text" class="form-control" id="floatingInputGrid" placeholder="Brand" name="brand" value="{{product.brand}}" required />
       <label for="floatingInputGrid">Brand</label>
     </div>
     <div class="fluid form-floating col-md">
-      <input type="text" class="form-control" id="floatingInputGrid" placeholder="Model" name="model" value="{{product.model}}" />
+      <input type="text" class="form-control" id="floatingInputGrid" placeholder="Model" name="model" value="{{product.model}}" required />
       <label for="floatingInputGrid">Model</label>
     </div>
     <div class="fluid form-floating col-md">
-      <input type="number" class="form-control" id="floatingInputGrid" placeholder="Year" name="year" value="{{product.year}}" />
+      <input type="number" class="form-control" id="floatingInputGrid" placeholder="Year" name="year" value="{{product.year}}" required />
       <label for="floatingInputGrid">Year</label>
     </div>
     {{! DROPDOWN SELECTOR }}
@@ -35,13 +35,13 @@
 
   <div class="input-group mb-3 my-2">
     <span class="input-group-text">€</span>
-    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="Selling price" name="price" value="{{product.price}}" />
+    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="Selling price" name="price" value="{{product.price}}" required />
     <span class="input-group-text">.00</span>
   </div>
   {{! TEXT AREA }}
   <div class="mb-3">
     <label for="validationTextarea" class="form-label my-2">Describe your product:</label>
-    <textarea class="form-control is-invalid" id="validationTextarea" data-mdb-showcounter="true" maxlength="500" placeholder="Required example textarea" required name="description">{{product.description}}</textarea>
+    <textarea class="form-control" id="validationTextarea" data-mdb-showcounter="true" maxlength="500" placeholder="Required example textarea" required name="description">{{product.description}}</textarea>
     <div class="invalid-feedback">
       Please enter a message in the textarea.
     </div>
@@ -84,7 +84,7 @@
   </div>
 
   <div class="mb-3">
-    <input type="file" class="form-control" aria-label="file example" name="image" required multiple />
+    <input type="file" class="form-control" aria-label="file example" name="image" multiple />
     <div class="invalid-feedback">Example invalid form file feedback</div>
   </div>
 

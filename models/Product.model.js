@@ -8,7 +8,7 @@ const productSchema = new Schema(
     },
     brand: {
       type: String,
-      required: false,
+      required: true,
     },
     model: {
       type: String,

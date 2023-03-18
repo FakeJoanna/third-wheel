@@ -23,6 +23,7 @@ const userSchema = new Schema(
     stars: {
       type: [Number],
     },
+    productsInCart: [{ type: Schema.Types.ObjectId, ref: "Product" }],
   },
   {
     timestamps: true,
