@@ -41,7 +41,7 @@ app.use("/", quickLinkRoutes)
 const newListing = require("./routes/Product.routes")
 app.use("/", newListing)
 
-const newCart = require("./routes/cart.routes")
+const newCart = require("./routes/Cart.routes")
 app.use("/", newCart)
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes

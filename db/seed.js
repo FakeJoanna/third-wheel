@@ -1,5 +1,6 @@
 const mongoose = require("mongoose")
 const Product = require("../models/Product.model")
+const { ObjectId } = mongoose.Types
 
 const MONGO_URI = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/third-wheel"
 
@@ -11,7 +12,7 @@ const products = [
     year: 2021,
     description: "The Specialized Turbo Creo SL Expert Carbon is a lightweight and high-performance electric road bike designed for long-distance rides and endurance training.",
     price: 8799,
-    image: [],
+    image: ["https://bikefair.ams3.cdn.digitaloceanspaces.com/public/337396/responsive-images/ped027_01___media_library_original_510_360.jpg"],
     condition: "As good as new",
     isSold: false,
     specifications: {
@@ -23,7 +24,7 @@ const products = [
       range: "up to 80 miles",
       gears: "Shimano Ultegra Di2 11-speed",
     },
-    postedBy: "64158f4ba0a74e8d648ff1c0",
+    postedBy: new ObjectId("64158f4ba0a74e8d648ff1c0"),
   },
   {
     title: "Cannondale Moterra Neo 5",
@@ -32,7 +33,7 @@ const products = [
     year: 2022,
     description: "The Cannondale Moterra Neo 5 is a versatile and powerful electric mountain bike designed for all-mountain and trail riding.",
     price: 4799,
-    image: [],
+    image: ["https://bikefair.ams3.cdn.digitaloceanspaces.com/public/337396/responsive-images/ped027_01___media_library_original_510_360.jpg"],
     condition: "Used",
     isSold: false,
     specifications: {
@@ -44,7 +45,7 @@ const products = [
       range: "up to 75 miles",
       gears: "Shimano Deore M5100 11-speed",
     },
-    postedBy: "64158f4ba0a74e8d648ff1c0",
+    postedBy: new ObjectId("64158f4ba0a74e8d648ff1c0"),
   },
   {
     title: "Trek Rail 9.9",
@@ -53,7 +54,7 @@ const products = [
     year: 2022,
     description: "The Trek Rail 9.9 is a high-end electric mountain bike designed for aggressive trail riding and enduro racing.",
     price: 11999,
-    image: [],
+    image: ["https://bikefair.ams3.cdn.digitaloceanspaces.com/public/337396/responsive-images/ped027_01___media_library_original_510_360.jpg"],
     condition: "Poor condition",
     isSold: false,
     specifications: {
@@ -65,7 +66,7 @@ const products = [
       range: "up to 70 miles",
       gears: "SRAM X01 Eagle 12-speed",
     },
-    postedBy: "64158f4ba0a74e8d648ff1c0",
+    postedBy: new ObjectId("64158f4ba0a74e8d648ff1c0"),
   },
   {
     title: "Giant Road E+ Pro 1",
@@ -74,7 +75,7 @@ const products = [
     year: 2022,
     description: "The Giant Road E+ Pro 1 is an electric road bike designed for speed and performance, with a powerful motor and responsive handling.",
     price: 5999,
-    image: [],
+    image: ["https://bikefair.ams3.cdn.digitaloceanspaces.com/public/337396/responsive-images/ped027_01___media_library_original_510_360.jpg"],
     condition: "New",
     isSold: false,
     specifications: {
@@ -86,7 +87,7 @@ const products = [
       range: "up to 60 miles",
       gears: "Shimano Ultegra Di2 11-speed",
     },
-    postedBy: "64158f4ba0a74e8d648ff1c0",
+    postedBy: new ObjectId("64158f4ba0a74e8d648ff1c0"),
   },
   {
     title: "Giant Talon 29er",
@@ -95,7 +96,7 @@ const products = [
     year: 2017,
     description: "The Giant Talon 29er is a hardtail mountain bike designed for trail riding.",
     price: 499,
-    image: [],
+    image: ["https://bikefair.ams3.cdn.digitaloceanspaces.com/public/337396/responsive-images/ped027_01___media_library_original_510_360.jpg"],
     condition: "Poor condition",
     isSold: false,
     specifications: {
@@ -107,7 +108,7 @@ const products = [
       range: null,
       gears: "Shimano Deore 3x9",
     },
-    postedBy: "64158f4ba0a74e8d648ff1c0",
+    postedBy: new ObjectId("64158f4ba0a74e8d648ff1c0"),
   },
   {
     title: "Specialized Turbo Levo Comp",
@@ -116,7 +117,7 @@ const products = [
     year: 2022,
     description: "The Specialized Turbo Levo Comp is a full-suspension electric mountain bike designed for all-mountain riding, with a powerful motor and advanced suspension system.",
     price: 7999,
-    image: [],
+    image: ["https://bikefair.ams3.cdn.digitaloceanspaces.com/public/337396/responsive-images/ped027_01___media_library_original_510_360.jpg"],
     condition: "As good as new",
     isSold: false,
     specifications: {
@@ -128,7 +129,7 @@ const products = [
       range: "up to 70 miles",
       gears: "SRAM NX Eagle 12-speed",
     },
-    postedBy: "64158f4ba0a74e8d648ff1c0",
+    postedBy: new ObjectId("64158f4ba0a74e8d648ff1c0"),
   },
   {
     title: "Specialized Turbo Vado SL 4.0 EQ",
@@ -137,7 +138,7 @@ const products = [
     year: 2021,
     description: "The Specialized Turbo Vado SL 4.0 EQ is a high-performance electric bike designed for commuting and fitness riding.",
     price: 3999,
-    image: [],
+    image: ["https://bikefair.ams3.cdn.digitaloceanspaces.com/public/337396/responsive-images/ped027_01___media_library_original_510_360.jpg"],
     condition: "As good as new",
     isSold: false,
     specifications: {
@@ -149,7 +150,7 @@ const products = [
       range: "up to 80 miles",
       gears: "Shimano Deore 10-speed",
     },
-    postedBy: "64158f4ba0a74e8d648ff1c0",
+    postedBy: new ObjectId("64158f4ba0a74e8d648ff1c0"),
   },
   {
     title: "Cannondale Topstone Neo Carbon Lefty 1",
@@ -158,7 +159,7 @@ const products = [
     year: 2022,
     description: "The Cannondale Topstone Neo Carbon Lefty 1 is an electric gravel bike designed for adventure riding, with a lightweight carbon frame and a unique Lefty suspension fork.",
     price: 7999,
-    image: [],
+    image: ["https://bikefair.ams3.cdn.digitaloceanspaces.com/public/337396/responsive-images/ped027_01___media_library_original_510_360.jpg"],
     condition: "Used",
     isSold: false,
     specifications: {
@@ -170,7 +171,7 @@ const products = [
       range: "up to 60 miles",
       gears: "Shimano GRX 1x11-speed",
     },
-    postedBy: "64158f4ba0a74e8d648ff1c0",
+    postedBy: new ObjectId("64158f4ba0a74e8d648ff1c0"),
   },
   {
     title: "Trek Powerfly FS 9 LT",
@@ -179,7 +180,7 @@ const products = [
     year: 2022,
     description: "This electric mountain bike is designed to give you the power to ride more trails. It features a full suspension setup and a powerful Bosch Performance CX motor.",
     price: 8000,
-    image: [],
+    image: ["https://bikefair.ams3.cdn.digitaloceanspaces.com/public/337396/responsive-images/ped027_01___media_library_original_510_360.jpg"],
     condition: "New",
     isSold: false,
     specifications: {
@@ -191,7 +192,7 @@ const products = [
       range: "Up to 75 miles",
       gears: "12-speed Shimano XT",
     },
-    postedBy: "64158f4ba0a74e8d648ff1c0",
+    postedBy: new ObjectId("64158f4ba0a74e8d648ff1c0"),
   },
   {
     title: "Specialized Turbo Levo",
@@ -200,7 +201,7 @@ const products = [
     year: 2021,
     description: "This electric mountain bike is designed to give you the power to ride more trails. It features a full suspension setup and a powerful Brose motor.",
     price: 7000,
-    image: [],
+    image: ["https://bikefair.ams3.cdn.digitaloceanspaces.com/public/337396/responsive-images/ped027_01___media_library_original_510_360.jpg"],
     condition: "As good as new",
     isSold: false,
     specifications: {
@@ -212,7 +213,7 @@ const products = [
       range: "Up to 60 miles",
       gears: "11-speed Shimano XT",
     },
-    postedBy: "64158f4ba0a74e8d648ff1c0",
+    postedBy: new ObjectId("64158f4ba0a74e8d648ff1c0"),
   },
   {
     title: "Specialized Turbo Levo",
@@ -221,7 +222,7 @@ const products = [
     year: 2022,
     description: "The Turbo Levo is a fully-fledged progressive trail bike.",
     price: 5499,
-    image: [],
+    image: ["https://bikefair.ams3.cdn.digitaloceanspaces.com/public/337396/responsive-images/ped027_01___media_library_original_510_360.jpg"],
     condition: "New",
     isSold: false,
     specifications: {
@@ -233,7 +234,7 @@ const products = [
       range: "80km",
       gears: "12",
     },
-    postedBy: "64158f4ba0a74e8d648ff1c0",
+    postedBy: new ObjectId("64158f4ba0a74e8d648ff1c0"),
   },
   {
     title: "Trek Powerfly FS 9",
@@ -242,7 +243,7 @@ const products = [
     year: 2021,
     description: "The Powerfly FS 9 is a top-of-the-line full suspension electric mountain bike.",
     price: 7899,
-    image: [],
+    image: ["https://bikefair.ams3.cdn.digitaloceanspaces.com/public/337396/responsive-images/ped027_01___media_library_original_510_360.jpg"],
     condition: "As good as new",
     isSold: false,
     specifications: {
@@ -254,7 +255,7 @@ const products = [
       range: "75km",
       gears: "12",
     },
-    postedBy: "64158f4ba0a74e8d648ff1c0",
+    postedBy: new ObjectId("64158f4ba0a74e8d648ff1c0"),
   },
   {
     title: "E-speeder 5",
@@ -263,7 +264,7 @@ const products = [
     year: 2022,
     description: "This is a brand new electric bike with top of the line features.",
     price: 2000,
-    image: [],
+    image: ["https://bikefair.ams3.cdn.digitaloceanspaces.com/public/337396/responsive-images/ped027_01___media_library_original_510_360.jpg"],
     condition: "New",
     isSold: false,
     specifications: {
@@ -275,7 +276,7 @@ const products = [
       range: "40 miles",
       gears: "6 Speed",
     },
-    postedBy: "64158f4ba0a74e8d648ff1c0",
+    postedBy: new ObjectId("64158f4ba0a74e8d648ff1c0"),
   },
   {
     title: "E-speeder 5",
@@ -284,7 +285,7 @@ const products = [
     year: 2021,
     description: "This is a used electric bike in excellent condition.",
     price: 1500,
-    image: [],
+    image: ["https://bikefair.ams3.cdn.digitaloceanspaces.com/public/337396/responsive-images/ped027_01___media_library_original_510_360.jpg"],
     condition: "As good as new",
     isSold: false,
     specifications: {
@@ -296,7 +297,7 @@ const products = [
       range: "50 miles",
       gears: "10 Speed",
     },
-    postedBy: "64158f4ba0a74e8d648ff1c0",
+    postedBy: new ObjectId("64158f4ba0a74e8d648ff1c0"),
   },
   {
     title: "Xenon Exos",
@@ -305,7 +306,7 @@ const products = [
     year: 2022,
     description: "This is a brand new electric bike with top of the line features.",
     price: 2150,
-    image: [],
+    image: ["https://bikefair.ams3.cdn.digitaloceanspaces.com/public/337396/responsive-images/ped027_01___media_library_original_510_360.jpg"],
     condition: "New",
     isSold: false,
     specifications: {
@@ -317,7 +318,7 @@ const products = [
       range: "40 miles",
       gears: "7 Speed",
     },
-    postedBy: "64158f4ba0a74e8d648ff1c0",
+    postedBy: new ObjectId("64158f4ba0a74e8d648ff1c0"),
   },
   {
     title: "Omega Zephyr",
@@ -326,7 +327,7 @@ const products = [
     year: 2021,
     description: "This is a used electric bike in excellent condition.",
     price: 1850,
-    image: [],
+    image: ["https://bikefair.ams3.cdn.digitaloceanspaces.com/public/337396/responsive-images/ped027_01___media_library_original_510_360.jpg"],
     condition: "As good as new",
     isSold: false,
     specifications: {
@@ -338,7 +339,7 @@ const products = [
       range: "50 miles",
       gears: "10 Speed",
     },
-    postedBy: "64158f4ba0a74e8d648ff1c0",
+    postedBy: new ObjectId("64158f4ba0a74e8d648ff1c0"),
   },
   {
     title: "Eco-Cruise E200",
@@ -347,7 +348,7 @@ const products = [
     year: 2023,
     description: "This is a brand new electric bike with top of the line features.",
     price: 2250,
-    image: [],
+    image: ["https://bikefair.ams3.cdn.digitaloceanspaces.com/public/337396/responsive-images/ped027_01___media_library_original_510_360.jpg"],
     condition: "New",
     isSold: false,
     specifications: {
@@ -359,7 +360,7 @@ const products = [
       range: "45 miles",
       gears: "8 Speed",
     },
-    postedBy: "64158f4ba0a74e8d648ff1c0",
+    postedBy: new ObjectId("64158f4ba0a74e8d648ff1c0"),
   },
   {
     title: "Velocity Pro",
@@ -368,7 +369,7 @@ const products = [
     year: 2021,
     description: "This is a used electric bike in excellent condition.",
     price: 1900,
-    image: [],
+    image: ["https://bikefair.ams3.cdn.digitaloceanspaces.com/public/337396/responsive-images/ped027_01___media_library_original_510_360.jpg"],
     condition: "As good as new",
     isSold: false,
     specifications: {
@@ -380,7 +381,7 @@ const products = [
       range: "50 miles",
       gears: "10 Speed",
     },
-    postedBy: "64158f4ba0a74e8d648ff1c0",
+    postedBy: new ObjectId("64158f4ba0a74e8d648ff1c0"),
   },
 ]
 

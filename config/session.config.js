@@ -24,8 +24,7 @@ module.exports = (app) => {
         maxAge: 86400000,
       }, // ADDED code below !!!
       store: MongoStore.create({
-        mongoUrl:
-          process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/third-wheel",
+        mongoUrl: process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/third-wheel",
 
         // ttl => time to live
         // ttl: 60 * 60 * 24 // 60sec * 60min * 24h => 1 day

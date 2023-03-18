@@ -7,3 +7,7 @@
     <img src="{{this}}" alt="" class="" />
   {{/each}}
 </div>
+
+<form action="/product/{{product._id}}" method="POST" id="buyForm">
+  <button class="btn btn-primary border-rad">Add to cart</button>
+</form>

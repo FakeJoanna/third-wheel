@@ -34,7 +34,7 @@ router.post("/new-listing", fileUploader.array("image"), isLoggedIn, (req, res, 
 
 // GET PRODUCT DETAILS
 
-router.get("/product/:productID", isLoggedIn, (req, res, next) => {
+router.get("/product/:productID", (req, res, next) => {
   const { productID } = req.params
 
   Product.findById(productID)

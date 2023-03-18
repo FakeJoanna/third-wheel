@@ -5,7 +5,11 @@ const { isLoggedIn } = require("../utils/middleware/middleware.js")
 
 /* GET home page */
 router.get("/", (req, res, next) => {
-  res.render("index", { userInSession: req.session.currentUser })
+  let products = Product.find({})
+  products.then((response) => {
+    res.render("index", { data: response, userInSession: req.session.currentUser })
+  })
+
   res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate")
   res.setHeader("Pragma", "no-cache")
   res.setHeader("Expires", "0")
@@ -14,7 +18,7 @@ router.get("/", (req, res, next) => {
 /* GET Search Bar */
 router.get("/search", (req, res, next) => {
   const regex = new RegExp(req.query.query, "i")
-  Product.find({ $text: { $search: regex } })
+  Product.find({ $or: [{ title: regex }, { description: regex }, { brand: regex }, { model: regex }] })
     .then((response) => {
       res.render("search", {
         data: response,
