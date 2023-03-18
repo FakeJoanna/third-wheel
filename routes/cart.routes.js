@@ -2,29 +2,31 @@ const express = require("express")
 const router = express.Router()
 const Product = require("../models/Product.model")
 
+// GET CART ROUTE
+
 router.get("/cart", (req, res) => {
   res.render("cart", { userInSession: req.session.currentUser })
 })
 
+// POST CART ROUTE
+
 router.post("/cart", (req, res) => {
   let { shoppingCart } = req.body
   shoppingCart = JSON.parse(shoppingCart)
-
+  
   numberOfItems = shoppingCart.length
 
-  console.log(numberOfItems)
-  Product.find({ _id: { $in: shoppingCart } })
+  const query = shoppingCart.map(id => ({ _id: id }))
+  console.log(query)
+
+  Product.find({ $or: query })
     .then((response) => {
-      res.render("cart", { products: response, numberOfItems })
+      const products = shoppingCart.map(id => {
+        return response.find(product => product._id.toString() === id.toString())
+      })
+      res.render("cart", { products, numberOfItems, userInSession: req.session.currentUser })
     })
     .catch((error) => console.log(`Error fetching products from DB: ${error}`))
-})
-
-// POST PRODUCT PAGE BUY BUTTON
-
-router.post("/product/:productID", (req, res, next) => {
-  const { productID } = req.params
-  let user = req.session.currentUser
 })
 
 module.exports = router

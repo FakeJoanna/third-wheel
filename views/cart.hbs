@@ -1,5 +1,4 @@
 <div class="container d-flex row">
-
   <div class="container-fluid align-items-center row d-flex-center">
     <div class="row g-5">
       <div class="col-md-5 col-lg-4 order-md-last">
@@ -11,10 +10,11 @@
           {{#each products}}
             <li class="list-group-item d-flex justify-content-between lh-sm">
               <div>
-                <h6 class="my-0"> {{this.title}}</h6>
+                <h6 class="my-0">{{this.title}}</h6>
                 <small class="text-muted">{{this.model}}</small>
               </div>
               <span class="text-muted">$<span class="text-muted individualPrice">{{this.price}}</span></span>
+              {{!-- <button class="btn btn-warn"></button> --}}
             </li>
           {{/each}}
           <li class="list-group-item d-flex justify-content-between">
@@ -27,7 +27,9 @@
   </div>
 
   <form action="/cart" id="clearCart">
-    <button class="btn btn-primary border-rad" type="submit">Clear cart</button>
+    <button class="btn btn-primary border-rad">Clear cart</button>
   </form>
 
 </div>
+
+<script src="/js/cart.js" defer></script>
