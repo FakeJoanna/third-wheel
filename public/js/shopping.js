@@ -9,6 +9,15 @@ function addToCart(event) {
   productArray.push(currentProductID)
 
   localStorage.setItem("shoppingCart", JSON.stringify(productArray))
+
+  const button = document.getElementById("buyButton")
+  button.style.backgroundColor = "green"
+  button.innerHTML = "Added to cart!"
+
+  setTimeout(() => {
+    button.style.backgroundColor = "#0275d8 "
+    button.innerHTML = "Add to cart"
+  }, 2000)
 }
 
 if (document.getElementById("buyForm") !== null) {

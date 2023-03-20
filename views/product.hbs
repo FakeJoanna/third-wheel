@@ -1,13 +1,29 @@
-<div class="container-fluid">
-  <h1>{{product.title}}</h1>
-  <h2>{{product.description}}</h2>
-</div>
-<div class="container-fluid d-flex justify-content-center">
+<div class="container-fluid d-flex flex-column justify-content-center align-items-center">
   {{#each product.image}}
+  <div>
     <img src="{{this}}" alt="" class="" />
+  </div>
   {{/each}}
+  <div class="col-8">
+    <form action="/product/{{product._id}}" method="POST" id="buyForm" class="row">
+      <button class="btn btn-primary border-rad" id="buyButton">Add to cart</button>
+    </form>
+  </div>
 </div>
+<hr>
 
-<form action="/product/{{product._id}}" method="POST" id="buyForm">
-  <button class="btn btn-primary border-rad">Add to cart</button>
-</form>
+<div class="container-fluid d-flex flex-column">
+  <h1>{{product.price}}<span>$</span></h1>
+  <h2>{{product.title}}</h2>
+  <h4>{{product.model}}</h4>
+  <h4>{{product.brand}}</h4>
+  <h4>{{product.year}}</h4>
+  <h6>{{product.condition}}</h6>
+  <hr>
+  <p>{{product.description}}</p>
+  <ul>
+    {{#each product.specifications}}
+      <li>{{this}}</li>
+    {{/each}}
+  </ul>
+</div>
