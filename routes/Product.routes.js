@@ -16,9 +16,14 @@ router.get("/new-listing", isLoggedIn, (req, res, next) => {
   }
 })
 
-// POST CREATE PRODUCT
 
-router.post("/new-listing", fileUploader.array("image"), isLoggedIn, (req, res, next) => {
+// EXPERIMENTAL - API ENDPOINT TO HANDLE DROPZONE IMAGE UPLOADS
+
+router.post("/api/upload", fileUploader.single("file"), (req, res) => {
+  res.json(req.file.path)
+})
+
+router.post("/new-listing", isLoggedIn, (req, res, next) => {
   req.body.image = []
   console.log(req.body)
   req.files.forEach((element) => {
@@ -31,6 +36,23 @@ router.post("/new-listing", fileUploader.array("image"), isLoggedIn, (req, res, 
     })
     .catch((error) => console.log(`Error while creating a new product: ${error}`))
 })
+
+
+// POST CREATE PRODUCT
+
+// router.post("/new-listing", fileUploader.array("image"), isLoggedIn, (req, res, next) => {
+//   req.body.image = []
+//   console.log(req.body)
+//   req.files.forEach((element) => {
+//     req.body.image.push(element.path)
+//   })
+
+//   Product.create(req.body)
+//     .then((newProduct) => {
+//       res.redirect(`/product/${newProduct._id}`)
+//     })
+//     .catch((error) => console.log(`Error while creating a new product: ${error}`))
+// })
 
 // GET PRODUCT DETAILS
 
