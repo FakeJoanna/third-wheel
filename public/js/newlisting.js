@@ -1,42 +1,37 @@
-Dropzone.options.dropzone = {
+Dropzone.options.imageUpload = {
   paramName: "file",
   addRemoveLinks: true,
   acceptedFiles: "image/*",
   init: function () {
-    this.on("addedfile", function (file) {
-      const formData = new FormData();
-      formData.append("image", file);
-      console.log(formData)
-
-      fetch("http://localhost:3000/api/upload", {
-        method: "POST",
-        body: formData,
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          console.log("This is the data: ", data);
-          
-          value.push(data)
-          imageInput.value = `${value}`
-          
-        })
-        .catch((error) => console.error(error));
-    });
+    dropzone = this
+    this.on("success", function (file, response) {
+      URLs.push(response)
+      imageInput.value = JSON.stringify(URLs)
+    })
   },
 }
 
-const value = []
+let dropzone
+
+const URLs = []
 const imageInput = document.getElementById("imageInput")
 
 const mainForm = document.getElementById("mainForm")
 const submitBtn = document.getElementById("submitButton")
-const formData = new FormData(mainForm)
 
-const errorP = document.createElement("p")
-errorP.innerHTML = "Please upload at least one image"
+const errorP = document.createElement("span")
+errorP.innerHTML = "Please upload at least one image!"
 
-submitBtn.addEventListener("click", event => {
-  console.log("submit eventListener works")
+mainForm.addEventListener("submit", (event) => {
+  event.preventDefault()
+  if (dropzone.getAcceptedFiles().length === 0) {
+    document.getElementById("submitDiv").appendChild(errorP)
+    submitBtn.style.backgroundColor = " #d9534f"
+
+    setTimeout(() => {
+      submitBtn.style.backgroundColor = "#0275d8"
+      errorP.remove()
+    }, 2000)
+  }
   mainForm.submit()
 })
-

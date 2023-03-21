@@ -13,16 +13,15 @@ router.get("/cart", (req, res) => {
 router.post("/cart", (req, res) => {
   let { shoppingCart } = req.body
   shoppingCart = JSON.parse(shoppingCart)
-  
+
   numberOfItems = shoppingCart.length
 
-  const query = shoppingCart.map(id => ({ _id: id }))
-  console.log(query)
+  const query = shoppingCart.map((id) => ({ _id: id }))
 
   Product.find({ $or: query })
     .then((response) => {
-      const products = shoppingCart.map(id => {
-        return response.find(product => product._id.toString() === id.toString())
+      const products = shoppingCart.map((id) => {
+        return response.find((product) => product._id.toString() === id.toString())
       })
       res.render("cart", { products, numberOfItems, userInSession: req.session.currentUser })
     })

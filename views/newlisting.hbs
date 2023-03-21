@@ -2,10 +2,13 @@
 <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js" defer></script>
 <script src="/js/newlisting.js" defer></script>
 
-<form class="container" action="/new-listing" method="POST" enctype="multipart/form-data" id="mainForm">
+<div class="container mb-3" id="dropzoneDiv">
   <h3 class="my-4">Start selling now !</h3>
-  <div class="row g-2">
+  <form action="/api/upload" class="dropzone" id="imageUpload"></form>
+</div>
 
+<form class="container" action="/new-listing" method="POST" id="mainForm">
+  <div class="row g-2">
     <div class="form-floating">
       <input type="text" class="form-control" id="floatingInputGrid" placeholder="Title" name="title" required />
       <label for="floatingInputGrid">Title</label>
@@ -86,23 +89,10 @@
       <label for="floatingInputGrid">Gears</label>
     </div>
     <input type="hidden" name="postedBy" value="{{userInSession._id}}" />
+    <input type="hidden" name="image" id="imageInput" />
   </div>
 
-  {{!-- <div class="mb-3 dropzone" id="imageUpload">
-
-  </div> --}}
-
-  {{!-- <div class="mb-3">
-    <input type="file" class="form-control" aria-label="file example" name="image" required multiple />
-    <div class="invalid-feedback">Example invalid form file feedback</div>
-  </div> --}}
-
-  <input type="hidden" name="image" id="imageInput">
-
+  <div class="mb-3" id="submitDiv">
+    <button class="btn btn-primary border-none" type="submit" id="submitButton">Submit form</button>
+  </div>
 </form>
-
-<form action="/api/upload" class="dropzone" id="imageUpload"></form>
-
-<div class="mb-3">
-  <button class="btn btn-primary" type="submit" id="submitButton">Submit form</button>
-</div>

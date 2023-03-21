@@ -1,7 +1,14 @@
-<form class="container" action="/product/{{product._id}}/edit" method="POST" enctype="multipart/form-data">
-  <h3 class="my-4">Edit your product:</h3>
-  <div class="row g-2">
+<link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
+<script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js" defer></script>
+<script src="/js/editpage.js" defer></script>
 
+<div class="container mb-3" id="dropzoneDiv">
+  <h3 class="my-4">Edit your product:</h3>
+  <form action="/api/upload" class="dropzone" id="imageUpload"></form>
+</div>
+
+<form class="container" action="/product/{{product._id}}/edit" method="POST" enctype="multipart/form-data">
+  <div class="row g-2">
     <div class="form-floating">
       <input type="text" class="form-control" id="floatingInputGrid" placeholder="Title" name="title" value="{{product.title}}" required />
       <label for="floatingInputGrid">Title</label>
@@ -81,15 +88,10 @@
       <input type="text" class="form-control" id="floatingInputGrid" placeholder="Tile" name="gears" value="{{product.gears}}" />
       <label for="floatingInputGrid">Gears</label>
     </div>
-  </div>
-
-  <div class="mb-3">
-    <input type="file" class="form-control" aria-label="file example" name="image" multiple />
-    <div class="invalid-feedback">Example invalid form file feedback</div>
+    <input type="hidden" name="image" id="imageInput" value="{{product.image}}" />
   </div>
 
   <div class="mb-3">
     <button class="btn btn-primary" type="submit">Submit form</button>
   </div>
-
 </form>

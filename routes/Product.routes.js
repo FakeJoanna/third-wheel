@@ -16,43 +16,24 @@ router.get("/new-listing", isLoggedIn, (req, res, next) => {
   }
 })
 
-
-// EXPERIMENTAL - API ENDPOINT TO HANDLE DROPZONE IMAGE UPLOADS
+// API ENDPOINT TO HANDLE DROPZONE IMAGE UPLOADS
 
 router.post("/api/upload", fileUploader.single("file"), (req, res) => {
   res.json(req.file.path)
 })
 
+// POST CREATE PRODUCT
+
 router.post("/new-listing", isLoggedIn, (req, res, next) => {
-  req.body.image = []
-  console.log(req.body)
-  req.files.forEach((element) => {
-    req.body.image.push(element.path)
-  })
+  req.body.image = JSON.parse(req.body.image)
 
   Product.create(req.body)
     .then((newProduct) => {
+      console.log(newProduct)
       res.redirect(`/product/${newProduct._id}`)
     })
     .catch((error) => console.log(`Error while creating a new product: ${error}`))
 })
-
-
-// POST CREATE PRODUCT
-
-// router.post("/new-listing", fileUploader.array("image"), isLoggedIn, (req, res, next) => {
-//   req.body.image = []
-//   console.log(req.body)
-//   req.files.forEach((element) => {
-//     req.body.image.push(element.path)
-//   })
-
-//   Product.create(req.body)
-//     .then((newProduct) => {
-//       res.redirect(`/product/${newProduct._id}`)
-//     })
-//     .catch((error) => console.log(`Error while creating a new product: ${error}`))
-// })
 
 // GET PRODUCT DETAILS
 
@@ -71,7 +52,6 @@ router.get("/product/:productID", (req, res, next) => {
 router.get("/product/:productID/edit", (req, res, next) => {
   const { productID } = req.params
   Product.findById(productID).then((response) => {
-    console.log(response)
     res.render("editpage", { product: response, userInSession: req.session.currentUser })
   })
 })
@@ -81,6 +61,7 @@ router.get("/product/:productID/edit", (req, res, next) => {
 router.post("/product/:productID/edit", fileUploader.array("image"), (req, res, next) => {
   const { productID } = req.params
   console.log(req.body)
+  req.body.image = JSON.parse(req.body.image)
   Product.findById(productID)
     .then((product) => {
       Object.assign(product, req.body)
@@ -111,7 +92,6 @@ router.get("/allListings", isLoggedIn, (req, res, next) => {
 
   Product.find({ postedBy: postedBy })
     .then((response) => {
-      console.log(response)
       res.render("allListings", { response, userInSession: req.session.currentUser })
     })
     .catch((error) => console.log(`Error while getting all listings page: ${error}`))

@@ -1,20 +1,40 @@
-<div class="grid-2 text-center m-5">
-  <h2 class="">
-    Hello
-    {{userInSession.username}}
+
+
+
+<div class="container px-4 py-5" id="hanging-icons">
+  <h1> Hello {{userInSession.username}}</h1>
   </h2>
   <p>welcome to the admin page.</p>
-</div>
-<div class="d-grid gap-2 m-5">
-  <form class="d-grid gap-2" action="/new-listing" method="GET">
-    <img src="https://i.ytimg.com/vi/nbrvhplP3Vk/maxresdefault.jpg" class="img-fluid" alt="sellebike" />
-    <button class="btn btn-primary mb-5" type="submit">Sell bike</button>
-  </form>
-  <form class="d-grid gap-2" action="/allListings" method="GET">
-    <img src="https://ebikeshq.com/wp-content/uploads/2021/03/Ebike_For_Sale-1024x1024.jpg" class="img-fluid" alt="sellebike" />
-    <button class="btn btn-primary mb-5" type="submit">See your posts</button>
-  </form>
-  <form class="d-grid gap-2" action="/logout" method="POST">
-    <button class="btn btn-outline-primary" type="submit">Log out</button>
-  </form>
-</div>
+  <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+    <div class="col d-flex align-items-start">
+      <div>
+        <form class="d-grid gap-2" action="/new-listing" method="GET">
+      <img src="https://i.ytimg.com/vi/nbrvhplP3Vk/maxresdefault.jpg" class="img-thumbnail rounded" alt="sellebike" />
+      <button class="btn btn-primary mb-5" type="submit">Sell bike</button>
+    </form>
+      </div>
+    </div>
+    <div class="col d-flex align-items-start">
+     
+      <div>
+         <form class="d-grid gap-2" action="/allListings" method="GET">
+      <img src="https://www.ebike24.com/blog/wp-content/uploads/2022/12/ebike-upway-refurbished-header-930x620.jpg" class="img-thumbnail rounded" alt="sellebike" />
+      <button class="btn btn-primary mb-5" type="submit">See your posts</button>
+    </form>
+      </div>
+    </div>
+    <div class="col d-flex align-items-start">
+      <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
+        <svg class="bi" width="1em" height="1em"><use xlink:href="#tools"></use></svg>
+      </div>
+      <div>
+        <h2>It's sad to see you leaving...</h2>
+        <form class="d-grid gap-2 my-5" action="/logout" method="POST">
+          <button class="btn btn-outline-danger" type="submit">Log out</button>
+        </form>
+        
+      </div>
+    </div>
+  </div>
+
+  

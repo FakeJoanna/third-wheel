@@ -20,7 +20,8 @@
                     <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"></path>
                   </svg>
                   {{userInSession.username}}
-                </button></a>
+                </button>
+                </a>
             </li>
           {{else}}
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
@@ -71,7 +72,7 @@
               </div>
             </div>
           </div>
-        </li>
+        
         <li class="nav-item">
           <form id="cartButton" action="/cart" method="POST">
             <input name="shoppingCart" id="cartButtonInput" type="hidden" value="[]">
@@ -92,7 +93,7 @@
             </div>
           </div> }}
         </li>
-      </ul>
+      
     </div>
   </div>
 </nav>
