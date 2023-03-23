@@ -1,10 +1,10 @@
 # Third Wheel
 
-the fastest and safer way to sell your e-bike in Europe
+The fastest and safer way to sell your e-bike online
 
 ### Description
 
-Ecommerce to buy and sell second hand e-bikes
+Second hand market place to buy and sell second hand e-bikes
 
 ### User Stories
 
@@ -30,14 +30,18 @@ Backlog
 
 - nodemailer
 - check-out
+- reviews
 - reset password
 - google map API
+- fency Bootstrap animations and status changes
 
 ### User profile:
 
+browse for products
 see my profile
 create post and add images
 list of all listing created by the user
+edit or delete his own product listing
 log-out
 
 ## ROUTES:
@@ -66,55 +70,8 @@ log-out
   GET /qL
 
 - CART-ROUTES
-  GET /singup
-  POST /signup
-  POST /api/users
-  POST /logout
-  renders the homepage
-  GET /auth/signup
-
-redirects to / if user logged in
-renders the signup form (with flash msg)
-POST /auth/signup
-
-redirects to / if user logged in
-body:
-username
-email
-password
-GET /auth/login
-
-redirects to / if user logged in
-renders the login form (with flash msg)
-POST /auth/login
-
-redirects to / if user logged in
-body:
-username
-password
-POST /auth/logout
-
-body: (empty)
-GET /events
-
-renders the event list + the create form
-POST /events/create
-
-redirects to / if user is anonymous
-body:
-name
-date
-location
-description
-GET /events/:id
-
-renders the event detail page
-includes the list of attendees
-attend button if user not attending yet
-POST /events/:id/attend
-
-redirects to / if user is anonymous
-body: (empty - the user is already stored in the session)
+  GET /cart
+  POST /cart
 
 ## Models
 
@@ -212,16 +169,18 @@ timestamps: true,
 
 # Git
 
-The url to your repository and to your deployed project
+The url to our repository and to the deployed project
 
 ### Repository Link
+
+https://github.com/FakeJoanna/third-wheel
 
 ### Deploy Link
 
 https://purple-penguin-cuff.cyclic.app/
 
-### Slides
+### Figma
 
-The url to your presentation slides
+https://www.figma.com/file/QF1sxv2ELmQ0TwqxZkdqs1/Third-Wheel?node-id=0%3A1&t=08lW2iR4MrnjpyXm-1
 
 ### Slides Link
