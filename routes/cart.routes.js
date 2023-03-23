@@ -16,6 +16,11 @@ router.post("/cart", (req, res) => {
 
   numberOfItems = shoppingCart.length
 
+  if (numberOfItems === 0) {
+    res.render("cart", { userInSession: req.session.currentUser })
+    return
+  }
+
   const query = shoppingCart.map((id) => ({ _id: id }))
 
   Product.find({ $or: query })

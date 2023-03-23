@@ -7,7 +7,8 @@ const { isLoggedIn } = require("../utils/middleware/middleware.js")
 router.get("/", (req, res, next) => {
   let products = Product.find({})
   products.then((response) => {
-    res.render("index", { data: response, userInSession: req.session.currentUser })
+    const data = response.slice(0, 5)
+    res.render("index", { data: data, userInSession: req.session.currentUser })
   })
 
   res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate")

@@ -10,80 +10,68 @@ Ecommerce to buy and sell second hand e-bikes
 
 404 - As a user I want to see a nice 404 page when I go to a page that doesn’t exist so that I know it was my fault
 
-500 - As a user I want to see a nice error page when the super team screws it up so that I know that is not my fault
-
 homepage - As a user I want to be able to access the homepage so that I see what the app is about and login and signup
 
-sign up - As a user I want to sign up on the webpage so that I can see all the events that I could attend
+sign up - As a user I want to sign up on the webpage so that I can create and edit my listings
 
 login - As a user I want to be able to log in on the webpage so that I can get back to my account
 
 logout - As a user I want to be able to log out from the webpage so that I can make sure no one will access my account
 
-events list - As a user I want to see all the events available so that I can choose which ones I want to attend
+product - As a user I want to see all the products available so that I can choose which ones I want to buy
 
-events create - As a user I want to create an event so that I can invite others to attend
+product create - As a user I want to post a product so that I can sell it to others
 
-events detail - As a user I want to see the event details and attendee list of one event so that I can decide if I want to attend
+product detail - As a user I want to see the product details and product specs of one bike so that I can decide if I want to purchase it
 
-event attend - As a user I want to be able to attend to event so that the organizers can count me in
+cart - As a user I want to monitor my cart and the costs
 
 Backlog
-List of other features outside of the MVPs scope
+
+- nodemailer
+- check-out
+- reset password
+- google map API
 
 ### User profile:
 
 see my profile
-upload my profile picture
-see other users profile
-list of events created by the user
-list events the user is attending
-Geo Location:
-
-add geolocation to events when creating
-show event in a map in event detail page
-show all products in a map product list page homepage
-
-...
-
-### Buyer profile:
-
-see my profile
-upload my profile picture
-see other users profile
-list of events created by the user
-list events the user is attending
-Geo Location:
-
-add geolocation to events when creating
-show event in a map in event detail page
-show all events in a map in the event list page
-Homepage
-
-...
-
-### Buyer PRO profile:
-
-see my profile
-upload my profile picture
-see other users profile
-list of events created by the user
-list events the user is attending
-Geo Location:
-
-add geolocation to events when creating
-show event in a map in event detail page
-show all events in a map in the event list page
-Homepage
-
-...
+create post and add images
+list of all listing created by the user
+log-out
 
 ## ROUTES:
 
-GET /
+- INDEX-ROUTES
+  GET /
+  GET /search
+  GET /user-profile if (isLoggedIn)
 
-renders the homepage
-GET /auth/signup
+- AUTH-ROUTES
+  GET /singup
+  POST /signup
+  POST /api/users
+  POST /logout
+
+- PRODUCT-ROUTES
+  GET /new-listing
+  POST /new-listing
+  GET /product/:productID
+  GET /product/:productID/edit
+  POST /product/:productID/edit
+  GET /allListings
+  POST /allListings
+
+- QUICK-LINKS-ROUTES
+  GET /qL
+
+- CART-ROUTES
+  GET /singup
+  POST /signup
+  POST /api/users
+  POST /logout
+  renders the homepage
+  GET /auth/signup
 
 redirects to / if user logged in
 renders the signup form (with flash msg)
@@ -132,21 +120,95 @@ body: (empty - the user is already stored in the session)
 
 User model
 
-username: String
-password: String
-Event model
+const userSchema = new Schema(
+{
+username: {
+type: String,
+trim: true,
+required: true,
+unique: true,
+},
+email: {
+type: String,
+required: true,
+unique: true,
+lowercase: true,
+trim: true,
+},
+password: {
+type: String,
+required: true,
+},
+stars: {
+type: [Number],
+},
+productsInCart: [{ type: Schema.Types.ObjectId, ref: "Product" }],
+},
+{
+timestamps: true,
+}
+)
 
-owner: ObjectId<User>
-name: String
-description: String
-date: Date
-location: String
-attendees: [ObjectId<User>]
+Product model
+
+const productSchema = new Schema(
+{
+title: {
+type: String,
+required: true,
+},
+brand: {
+type: String,
+required: true,
+},
+model: {
+type: String,
+required: true,
+},
+year: {
+type: Number,
+required: true,
+},
+description: {
+type: String,
+required: true,
+},
+price: {
+type: Number,
+required: true,
+},
+image: [
+{
+type: String,
+required: true,
+},
+],
+condition: {
+type: String,
+required: true,
+},
+isSold: {
+type: Boolean,
+required: true,
+default: false,
+},
+specifications: {
+frameSize: { type: String },
+motorType: { type: String },
+batteryCapacity: { type: String },
+wheelsSize: { type: String },
+maxSpeed: { type: String },
+range: { type: String },
+gears: { type: String },
+},
+postedBy: { type: Schema.Types.ObjectId, ref: "User" },
+},
+{
+timestamps: true,
+}
+)
 
 # Links
-
-Trello
-Link to your trello board or picture of your physical board
 
 # Git
 
@@ -155,6 +217,8 @@ The url to your repository and to your deployed project
 ### Repository Link
 
 ### Deploy Link
+
+https://purple-penguin-cuff.cyclic.app/
 
 ### Slides
 
