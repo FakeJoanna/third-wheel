@@ -184,3 +184,5 @@ https://purple-penguin-cuff.cyclic.app/
 https://www.figma.com/file/QF1sxv2ELmQ0TwqxZkdqs1/Third-Wheel?node-id=0%3A1&t=08lW2iR4MrnjpyXm-1
 
 ### Slides Link
+
+https://www.figma.com/proto/QF1sxv2ELmQ0TwqxZkdqs1/Third-Wheel?node-id=72-109&scaling=min-zoom&page-id=17%3A230
