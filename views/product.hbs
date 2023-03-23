@@ -1,29 +1,44 @@
-<div class="container-fluid d-flex flex-column justify-content-center align-items-center">
-  {{#each product.image}}
-  <div>
-    <img src="{{this}}" alt="" class="" />
-  </div>
-  {{/each}}
-  <div class="col-8">
-    <form action="/product/{{product._id}}" method="POST" id="buyForm" class="row">
-      <button class="btn btn-primary border-rad" id="buyButton">Add to cart</button>
-    </form>
-  </div>
-</div>
-<hr>
+<section style="background-color: #eeen">
+  <div class="container-lg py-5 text-center">
+    <div class="row justify-content-center">
+      <div class="d-flex col justify-content-center">
+        {{#each product.image}}
+          <img src="{{this}}" alt="" class="" />
+        {{/each}}
+      </div>
 
-<div class="container-fluid d-flex flex-column">
-  <h1>{{product.price}}<span>$</span></h1>
-  <h2>{{product.title}}</h2>
-  <h4>{{product.model}}</h4>
-  <h4>{{product.brand}}</h4>
-  <h4>{{product.year}}</h4>
-  <h6>{{product.condition}}</h6>
-  <hr>
-  <p>{{product.description}}</p>
-  <ul>
-    {{#each product.specifications}}
-      <li>{{this}}</li>
-    {{/each}}
-  </ul>
-</div>
+      <div class="d-flex justify-content-center p-3">
+        <form action="/product/{{product._id}}" method="POST" id="buyForm" class="d-flex justify-content-center">
+          <div><h1 class="align-items-center">{{product.price}}<span>$</span></h1></div>
+          <button class="btn btn-primary border-rad m-2" id="buyButton">Add to cart</button>
+        </form>
+      </div>
+
+      <div class="d-flex col justify-content-center p-3">
+        <div class="row">
+          <h2>{{product.title}}</h2>
+        </div>
+        <div class="row">
+          <h4>{{product.model}}</h4>
+        </div>
+        <div class="row">
+          <h4>{{product.brand}}</h4>
+        </div>
+        <div class="row">
+          <h6>{{product.condition}}</h6>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="d-flex g-5 space-around">
+      <p>{{product.description}}</p>
+      <ul>
+        {{#each product.specifications}}
+          <li>{{this}}</li>
+        {{/each}}
+      </ul>
+    </div>
+
+  </div>
+</section>
