@@ -39,7 +39,6 @@ router.post("/new-listing", isLoggedIn, (req, res, next) => {
 
 router.get("/product/:productID", (req, res, next) => {
   const { productID } = req.params
-
   Product.findById(productID)
     .then((product) => {
       res.render("product", { product, userInSession: req.session.currentUser })
@@ -60,12 +59,10 @@ router.get("/product/:productID/edit", (req, res, next) => {
 
 router.post("/product/:productID/edit", fileUploader.array("image"), (req, res, next) => {
   const { productID } = req.params
-  console.log(req.body)
   req.body.image = JSON.parse(req.body.image)
   Product.findById(productID)
     .then((product) => {
       Object.assign(product, req.body)
-      console.log(product)
       return product.save()
     })
     .then(() => {

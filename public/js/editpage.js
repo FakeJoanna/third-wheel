@@ -22,7 +22,6 @@ Dropzone.options.imageUpload = {
     })
 
     this.on("removedfile", function (file) {
-      console.log(file.url)
       const index = URLs.indexOf(file.url)
       if (index !== -1) {
         URLs.splice(index, 1)
@@ -37,7 +36,6 @@ const URLs = []
 
 const imageInput = document.getElementById("imageInput")
 const images = imageInput.value.split(",")
-console.log(images)
 
 function createThumbnail(url) {
   return new Promise((resolve, reject) => {
