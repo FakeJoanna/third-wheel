@@ -64,8 +64,8 @@ router.post("/api/users", isLoggedOut, (req, res, next) => {
         //no user
         res.json({ isUser: false })
       } else if (bcryptjs.compareSync(password, user.password)) {
-        //succesful request
-
+        res.header('Access-Control-Allow-Credentials', true);
+        res.header('Access-Control-Expose-Headers', 'Set-Cookie');
         if (rememberme === "") {
           req.session.currentUser = user
           req.session.cookie.maxAge = 2629746000
