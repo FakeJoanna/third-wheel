@@ -17,18 +17,6 @@ hbs.registerPartials(__dirname + "/views/partials")
 
 const app = express()
 
-app.use((req, res, next) => {
-    const allowedOrigins = ['http://localhost:3000'];
-    const origin = req.headers.origin || req.headers['x-forwarded-host'];
-    if (allowedOrigins.includes(origin)) {
-      res.setHeader('Access-Control-Allow-Origin', origin);
-    }
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-    next();
-});
-  
-
 require("./config/session.config")(app)
 
 // ℹ️ This function is getting exported from the config folder. It runs most pieces of middleware

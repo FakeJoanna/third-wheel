@@ -7,6 +7,16 @@ const { isLoggedIn, isLoggedOut } = require("../utils/middleware/middleware.js")
 const Mail = require("nodemailer/lib/mailer/index.js")
 const mail = require("../config/nodemailer")
 
+
+router.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  next();
+});
+
+
+
 //GET SIGNUP
 
 router.get("/signup", isLoggedOut, (req, res, next) => {
