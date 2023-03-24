@@ -16,7 +16,6 @@ router.use((req, res, next) => {
 });
 
 
-
 //GET SIGNUP
 
 router.get("/signup", isLoggedOut, (req, res, next) => {
