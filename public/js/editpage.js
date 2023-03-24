@@ -1,7 +1,17 @@
+let dropzone
+const URLs = []
+
+const imageInput = document.getElementById("imageInput")
+const images = imageInput.value.split(",")
+
+let numberAllowed = 4 - images.length
+
 Dropzone.options.imageUpload = {
   paramName: "file",
   addRemoveLinks: true,
   acceptedFiles: "image/*",
+  resizeHeight: 800,
+  maxFiles: numberAllowed,
   init: function () {
     dropzone = this
 
@@ -22,20 +32,17 @@ Dropzone.options.imageUpload = {
     })
 
     this.on("removedfile", function (file) {
-      const index = URLs.indexOf(file.url)
+      const index = URLs.indexOf(file.name)
+
       if (index !== -1) {
         URLs.splice(index, 1)
+        numberAllowed++
+        this.options.maxFiles = numberAllowed
         imageInput.value = JSON.stringify(URLs)
       }
     })
   },
 }
-
-let dropzone
-const URLs = []
-
-const imageInput = document.getElementById("imageInput")
-const images = imageInput.value.split(",")
 
 function createThumbnail(url) {
   return new Promise((resolve, reject) => {

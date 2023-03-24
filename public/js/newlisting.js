@@ -2,6 +2,8 @@ Dropzone.options.imageUpload = {
   paramName: "file",
   addRemoveLinks: true,
   acceptedFiles: "image/*",
+  resizeHeight: 800,
+  maxFiles: 4,
   init: function () {
     dropzone = this
     this.on("success", function (file, response) {

@@ -97,6 +97,7 @@ router.get("/allListings", isLoggedIn, (req, res, next) => {
 
   Product.find({ postedBy: postedBy })
     .then((response) => {
+      console.log(response)
       res.render("allListings", { response, userInSession: req.session.currentUser })
     })
     .catch((error) => console.log(`Error while getting all listings page: ${error}`))
