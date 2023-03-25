@@ -16,7 +16,7 @@ totalInput.innerHTML = "$" + total.toString()
 function clearCart(event) {
   event.preventDefault()
   window.localStorage.clear()
-  window.location.href = "http://localhost:3000/cart"
+  location.reload()
 }
 
 const clear = document.getElementById("clearCart")

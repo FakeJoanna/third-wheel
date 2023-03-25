@@ -39,7 +39,7 @@ loginForm.onsubmit = (event) => {
         errorPassword.innerHTML = "Incorrect password"
         passwordInputDiv.appendChild(errorPassword)
       } else {
-        window.location.href = `http://localhost:3000/user-profile`
+        window.location.href = `/user-profile`
       }
     })
 }
