@@ -7,6 +7,8 @@ const { isLoggedIn, isLoggedOut } = require("../utils/middleware/middleware.js")
 const Mail = require("nodemailer/lib/mailer/index.js")
 const mail = require("../config/nodemailer")
 
+const cors = require("cors");
+router.use(cors());
 
 router.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');

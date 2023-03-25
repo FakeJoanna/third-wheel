@@ -3,6 +3,10 @@ const router = express.Router()
 const Product = require("../models/Product.model")
 const { isLoggedIn } = require("../utils/middleware/middleware.js")
 
+const cors = require("cors");
+router.use(cors());
+
+
 router.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
