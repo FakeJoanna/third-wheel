@@ -21,7 +21,7 @@ loginForm.onsubmit = (event) => {
     formDataJSON[key] = value
   }
 
-  fetch("http://localhost:3000/api/users", {
+  fetch("/api/users", {
     method: "POST",
     body: JSON.stringify(formDataJSON),
     headers: {
