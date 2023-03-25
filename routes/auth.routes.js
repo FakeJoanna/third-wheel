@@ -8,7 +8,14 @@ const Mail = require("nodemailer/lib/mailer/index.js")
 const mail = require("../config/nodemailer")
 
 const cors = require("cors");
-router.use(cors());
+const corsOptions = {
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+};
+
+router.use(cors(corsOptions));
+
 
 router.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');

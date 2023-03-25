@@ -5,7 +5,14 @@ const { isLoggedOut, isLoggedIn } = require("../utils/middleware/middleware.js")
 const fileUploader = require("../config/cloudinary.config")
 
 const cors = require("cors");
-router.use(cors());
+const corsOptions = {
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+};
+
+router.use(cors(corsOptions));
+
 
 
 router.use((req, res, next) => {
