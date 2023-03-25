@@ -23,6 +23,7 @@ loginForm.onsubmit = (event) => {
 
   fetch("http://localhost:3000/api/users", {
     method: "POST",
+    mode: "cors",
     body: JSON.stringify(formDataJSON),
     headers: {
       "Content-Type": "application/json",
